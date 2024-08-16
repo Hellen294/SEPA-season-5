@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Fixtures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header img {
+            height: 50px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 6px 12px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+footer {
+    background-color: #004080;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo2.jpeg" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="table.html">Live Standing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Match Fixtures & <a href="https://livescore-lilac.vercel.app/view.html">TODAY'S HIGHLIGHTS</a></h1>
+
+    <table>
+        <tr>
+            <th>S/N</th>
+            <th>Teams</th>
+            <th>Date/Day</th>
+            <th>Details</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>JIKADAWA VS SUPER LION</td>
+            <td>17/08/2024/SAT</td>
+            <td><button onclick="location.href='fixture1.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Berger Paint vs Athletic Integrate</td>
+            <td>18/08/2024/SUN</td>
+            <td><button onclick="location.href='fixture2.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Starlet vs Rock Utd</td>
+            <td>19/08/2024/MON</td>
+            <td><button onclick="location.href='fixture3.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Magaji fc vs Utd Star fc</td>
+            <td>20/08/2024/TUES</td>
+            <td><button onclick="location.href='fixture4.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Bola Park vs Young Pillars</td>
+            <td>21/08/2024/WED</td>
+            <td><button onclick="location.href='fixture5.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Maraba vs Utd Coaches</td>
+            <td>22/08/2024/THURS</td>
+            <td><button onclick="location.href='fixture6.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Manchi fc vs Suleja Tournadors</td>
+            <td>23/08/2024/FRI</td>
+            <td><button onclick="location.href='fixture7.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Hali Fc vs Balioux Fc</td>
+            <td>24/08/2024/SAT</td>
+            <td><button onclick="location.href='fixture8.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Soccer Builders vs Ifyoko Interg</td>
+            <td>25/08/2024/SUN</td>
+            <td><button onclick="location.href='fixture9.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Riders’ fc vs Wonder Boys</td>
+            <td>26/08/2024/MON</td>
+            <td><button onclick="location.href='fixture10.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>99 Bullet vs Zaki & Co Fc</td>
+            <td>27/08/2024/TUES</td>
+            <td><button onclick="location.href='Details-fixture11.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Royal Stars vs Milano fc</td>
+            <td>28/08/2024/WED</td>
+            <td><button onclick="location.href='Details-fixture12.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Magaji Boys vs Lazio Fc</td>
+            <td>29/08/2024/THURS</td>
+            <td><button onclick="location.href='Details-fixture13.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>Abatour Fc vs Morning star</td>
+            <td>30/08/2024/FRI</td>
+            <td><button onclick="location.href='Details-fixture14.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Jikadawa vs Hali Fc</td>
+            <td>31/08/2024/SAT</td>
+            <td><button onclick="location.href='Details-fixture15.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>Berger Paint vs Soccer Builders</td>
+            <td>01/09/2024/SUN</td>
+            <td><button onclick="location.href='Details-fixture16.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>Starlet Fc vs Riders</td>
+            <td>02/09/2024/MON</td>
+            <td><button onclick="location.href='Details-fixture17.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>Magaji fc vs 99 Bullet</td>
+            <td>03/09/2024/TUES</td>
+            <td><button onclick="location.href='Details-fixture18.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>Bola Park vs Royal Star</td>
+            <td>04/09/2024/WED</td>
+            <td><button onclick="location.href='Details-fixture19.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>Maraba vs Magaji Boys</td>
+            <td>05/09/2024/THURS</td>
+            <td><button onclick="location.href='Details-fixture20.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>Manchi fc vs Abatour fc</td>
+            <td>06/09/2024/FRI</td>
+            <td><button onclick="location.href='Details-fixture21.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>Hali Fc vs Balioux fc</td>
+            <td>07/09/2024/SAT</td>
+            <td><button onclick="location.href='Details-fixture22.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>Athletic Integrate FA vs Ifyoko Interg</td>
+            <td>08/09/2024/SUN</td>
+            <td><button onclick="location.href='Details-fixture23.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>Rock Utd vs Wonder Boys</td>
+            <td>09/09/2024/MON</td>
+            <td><button onclick="location.href='Details-fixture24.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>Utd Star vs Zaki & Co Fc</td>
+            <td>10/09/2024/TUES</td>
+            <td><button onclick="location.href='Details-fixture25.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>Young Pillars vs Milano fc</td>
+            <td>11/09/2024/WED</td>
+            <td><button onclick="location.href='Details-fixture26.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>27</td>
+            <td>Utd Coaches vs Lazio</td>
+            <td>12/09/2024/THURS</td>
+            <td><button onclick="location.href='Details-fixture27.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>28</td>
+            <td>Suleja Tournadors vs Morning Star</td>
+            <td>13/09/2024/FRI</td>
+            <td><button onclick="location.href='Details-fixture28.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>Balioux Fc vs Jikadawa</td>
+            <td>14/09/2024/SAT</td>
+            <td><button onclick="location.href='Details-fixture29.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>30</td>
+            <td>Ifyoko Interg vs Berger Paint Fc</td>
+            <td>15/09/2024/SUN</td>
+            <td><button onclick="location.href='Details-fixture30.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>31</td>
+            <td>Wonder Boys vs Starlet fc</td>
+            <td>16/09/2024/MON</td>
+            <td><button onclick="location.href='Details-fixture31.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>32</td>
+            <td>Zaki & Co Fc vs Magaji Fc</td>
+            <td>17/09/2024/TUES</td>
+            <td><button onclick="location.href='Details-fixture32.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>33</td>
+            <td>Milano fc vs Bola Park</td>
+            <td>18/09/2024/WED</td>
+            <td><button onclick="location.href='Details-fixture33.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>34</td>
+            <td>Lazio vs Maraba Fc</td>
+            <td>19/09/2024/THURS</td>
+            <td><button onclick="location.href='Details-fixture34.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>35</td>
+            <td>Abatour fc vs Suleja Tournadors</td>
+            <td>20/09/2024/FRI</td>
+            <td><button onclick="location.href='Details-fixture35.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>36</td>
+            <td>Super Lion vs Hali Fc</td>
+            <td>21/09/2024/SAT</td>
+            <td><button onclick="location.href='Details-fixture36.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>37</td>
+            <td>Soccer Builders vs Athletic Integrate FA</td>
+            <td>22/09/2024/SUN</td>
+            <td><button onclick="location.href='Details-fixture37.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>38</td>
+            <td>Riders vs Rock Utd</td>
+            <td>23/09/2024/MON</td>
+            <td><button onclick="location.href='Details-fixture38.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>39</td>
+            <td>99 Bullet vs Utd Star</td>
+            <td>24/09/2024/TUES</td>
+            <td><button onclick="location.href='Details-fixture39.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>40</td>
+            <td>Royal Star vs Young Pillars</td>
+            <td>25/09/2024/WED</td>
+            <td><button onclick="location.href='Details-fixture40.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>41</td>
+            <td>Magaji Boys vs Utd Coaches</td>
+            <td>26/09/2024/THURS</td>
+            <td><button onclick="location.href='Details-fixture41.html'">Details</button></td>
+        </tr>
+        <tr>
+            <td>42</td>
+            <td>Morning Star vs Manchi</td>
+            <td>27/08/2024/FRI</td>
+            <td><button onclick="location.href='Details-fixture42.html'">Details</button></td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <p>NOTE: All matches are to be played within 90 Min (45 mins each half). A fine of N500 will be paid for yellow card while N1000 will be paid for red card.</p>
+    </div>
+    <!-- Footer Section -->
+    <footer>
+        <p>Designed and managed by <strong>MathCloud-Tech</strong> - WhatsApp: +2348102341648</p>
+        <p>For more information about SEPA SEASON 5 FOOTBALL TOURNAMENT, visit our official website or follow us on social media.</p>
+    </footer>
+</body>
+</html>

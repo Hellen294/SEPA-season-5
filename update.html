@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update SEPA Season 5 - Group Data</title>
+    <style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Group Data</h1>
+        <form id="update-form">
+            <div class="form-group">
+                <label for="group">Group</label>
+                <select id="group" required>
+                    <option value="A">Group A</option>
+                    <option value="B">Group B</option>
+                    <option value="C">Group C</option>
+                    <option value="D">Group D</option>
+                    <option value="E">Group E</option>
+                    <option value="F">Group F</option>
+                    <option value="G">Group G</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team">Team</label>
+                <select id="team" required>
+                    <!-- Teams will be populated here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="played">Played</label>
+                <input type="number" id="played" required>
+            </div>
+            <div class="form-group">
+                <label for="won">Won</label>
+                <input type="number" id="won" required>
+            </div>
+            <div class="form-group">
+                <label for="drawn">Drawn</label>
+                <input type="number" id="drawn" required>
+            </div>
+            <div class="form-group">
+                <label for="lost">Lost</label>
+                <input type="number" id="lost" required>
+            </div>
+            <div class="form-group">
+                <label for="gf">GF</label>
+                <input type="number" id="gf" required>
+            </div>
+            <div class="form-group">
+                <label for="ga">GA</label>
+                <input type="number" id="ga" required>
+            </div>
+            <div class="form-group">
+                <label for="gd">GD</label>
+                <input type="number" id="gd" required>
+            </div>
+            <div class="form-group">
+                <label for="points">Points</label>
+                <input type="number" id="points" required>
+            </div>
+            <button type="submit">Update</button>
+            <div class="message" id="message"></div>
+        </form>
+    </div>
+
+    <!-- Firebase Compat Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyACuKrOws6x4XSzwK_cbt12apFKZd1wdTo",
+            authDomain: "football-c4a66.firebaseapp.com",
+            databaseURL: "https://football-c4a66-default-rtdb.firebaseio.com",
+            projectId: "football-c4a66",
+            storageBucket: "football-c4a66.appspot.com",
+            messagingSenderId: "816618764771",
+            appId: "1:816618764771:web:80a69d110079bf080e48d6",
+            measurementId: "G-946RE3GCMW"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Populate team dropdown when group is selected
+        document.getElementById('group').addEventListener('change', function() {
+            const selectedGroup = this.value;
+            const teamDropdown = document.getElementById('team');
+            teamDropdown.innerHTML = ''; // Clear existing options
+
+            database.ref(`groups/Group ${selectedGroup}`).once('value', snapshot => {
+                snapshot.forEach(childSnapshot => {
+                    const teamName = childSnapshot.key;
+                    const option = document.createElement('option');
+                    option.value = teamName;
+                    option.textContent = teamName;
+                    teamDropdown.appendChild(option);
+                });
+            });
+        });
+
+        // Populate form fields when a team is selected
+        document.getElementById('team').addEventListener('change', function() {
+            const selectedGroup = document.getElementById('group').value;
+            const selectedTeam = this.value;
+
+            if (selectedTeam) {
+                database.ref(`groups/Group ${selectedGroup}/${selectedTeam}`).once('value', snapshot => {
+                    const teamData = snapshot.val();
+                    document.getElementById('played').value = teamData.played;
+                    document.getElementById('won').value = teamData.won;
+                    document.getElementById('drawn').value = teamData.drawn;
+                    document.getElementById('lost').value = teamData.lost;
+                    document.getElementById('gf').value = teamData.gf;
+                    document.getElementById('ga').value = teamData.ga;
+                    document.getElementById('gd').value = teamData.gd;
+                    document.getElementById('points').value = teamData.points;
+                });
+            }
+        });
+
+        document.getElementById('update-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const group = document.getElementById('group').value;
+            const teamName = document.getElementById('team').value;
+            const played = parseInt(document.getElementById('played').value);
+            const won = parseInt(document.getElementById('won').value);
+            const drawn = parseInt(document.getElementById('drawn').value);
+            const lost = parseInt(document.getElementById('lost').value);
+            const gf = parseInt(document.getElementById('gf').value);
+            const ga = parseInt(document.getElementById('ga').value);
+            const gd = parseInt(document.getElementById('gd').value);
+            const points = parseInt(document.getElementById('points').value);
+
+            const teamData = {
+                team: teamName,
+                played,
+                won,
+                drawn,
+                lost,
+                gf,
+                ga,
+                gd,
+                points
+            };
+
+            // Update the Firebase database
+            database.ref(`groups/Group ${group}/${teamName}`).set(teamData)
+                .then(() => {
+                    document.getElementById('message').textContent = 'Update successful!';
+                })
+                .catch((error) => {
+                    document.getElementById('message').textContent = 'Update failed: ' + error.message;
+                });
+        });
+
+        // Initial load to populate the team dropdown if a group is selected
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('group').dispatchEvent(new Event('change'));
+        });
+    </script>
+</body>
+</html>

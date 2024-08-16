@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertisement Submission</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #responseMessage, #responseMessageError {
+            display: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        #responseMessage {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        #responseMessageError {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Submit Your Advertisement | <a href="sub.html">Click HERE for match tips</a></h2>
+    <form id="adForm">
+        <label for="name">Your Name</label>
+        <input type="text" name="name" id="name" placeholder="Your Name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" name="email" id="email" placeholder="Your Email" required>
+
+        <label for="company">Company Name</label>
+        <input type="text" name="company" id="company" placeholder="Your Company Name" required>
+
+        <label for="message">Advertisement Details</label>
+        <textarea name="message" id="message" placeholder="Your Advertisement Details" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="responseMessage">Your advertisement has been submitted!</div>
+    <div id="responseMessageError">There was an error submitting your advertisement. Please try again.</div>
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    (function() {
+        // Initialize EmailJS with your user ID
+        emailjs.init("9gydduA26qP4Do9xm");  // Replace 'YOUR_USER_ID' with your actual user ID from EmailJS
+
+        document.getElementById('adForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const serviceID = 'service_xjqgy6v'; // Replace with your EmailJS service ID
+            const templateID = 'template_j7el58d'; // Replace with your EmailJS template ID
+
+            // Prepare the parameters to be sent in the email
+            const templateParams = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                message: document.getElementById('message').value
+            };
+
+            // Send the form data to the email service
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(() => {
+                    document.getElementById('responseMessage').style.display = 'block';
+                    document.getElementById('responseMessageError').style.display = 'none';
+                    document.getElementById('adForm').reset();
+                }, (error) => {
+                    document.getElementById('responseMessage').style.display = 'none';
+                    document.getElementById('responseMessageError').style.display = 'block';
+                    console.error('FAILED...', error);
+                });
+        });
+    })();
+</script>
+
+</body>
+</html>

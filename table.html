@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPA Season 5 - Group Tables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 150px;
+        }
+
+        .nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .nav a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 40px;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .group-title {
+            font-size: 1.5em;
+            color: #007bff;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            th, td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .group-title {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SEPA Season 5</h1>
+    </header>
+
+    <div class="nav">
+        <a href="fixtures.html">Back to Fixtures</a>
+    </div>
+
+    <div class="container">
+        <img src="logo.png" alt="SEPA Season 5 Logo" class="logo">
+
+        <!-- Group Tables -->
+        <div class="group" id="group-tables">
+            <!-- Tables will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <div class="knockout-stage">
+        <h2>2. Knockout Stage</h2>
+        <div>
+            <div class="stage-title">Advancement to Knockout Stage</div>
+            <ul>
+                <li>Teams Qualifying: Top 2 teams from each of the 7 groups and 2 best third-placed teams across all groups.</li>
+                <li>Total Teams: 16 teams advance to the knockout stage.</li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>3. Round of 16</h2>
+            <ul>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">1A</span> vs <span class="team-circle"></span><span class="team-label">3B/C/D/E/F/G</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">1B</span> vs <span class="team-circle"></span><span class="team-label">3A/C/D/E/F/G</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">1C</span> vs <span class="team-circle"></span><span class="team-label">3A/B/D/E/F/G</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">1D</span> vs <span class="team-circle"></span><span class="team-label">3A/B/C/E/F/G</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">1E</span> vs <span class="team-circle"></span><span class="team-label">3A/B/C/D/F/G</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">1F</span> vs <span class="team-circle"></span><span class="team-label">3A/B/C/D/E/G</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">1G</span> vs <span class="team-circle"></span><span class="team-label">3A/B/C/D/E/F</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">2A</span> vs <span class="team-circle"></span><span class="team-label">2B</span></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>4. Quarter-Finals</h2>
+            <ul>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Winner Match 1</span> vs <span class="team-circle"></span><span class="team-label">Winner Match 2</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Winner Match 3</span> vs <span class="team-circle"></span><span class="team-label">Winner Match 4</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Winner Match 5</span> vs <span class="team-circle"></span><span class="team-label">Winner Match 6</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Winner Match 7</span> vs <span class="team-circle"></span><span class="team-label">Winner Match 8</span></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>5. Semi-Finals</h2>
+            <ul>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Winner QF1</span> vs <span class="team-circle"></span><span class="team-label">Winner QF2</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Winner QF3</span> vs <span class="team-circle"></span><span class="team-label">Winner QF4</span></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>6. Final and Third Place Playoff</h2>
+            <ul>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Winner SF1</span> vs <span class="team-circle"></span><span class="team-label">Winner SF2</span></li>
+                <li class="matchup"><span class="team-circle"></span><span class="team-label">Third Place Playoff: Loser SF1</span> vs <span class="team-circle"></span><span class="team-label">Loser SF2</span></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Firebase Compat Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyACuKrOws6x4XSzwK_cbt12apFKZd1wdTo",
+                authDomain: "football-c4a66.firebaseapp.com",
+                databaseURL: "https://football-c4a66-default-rtdb.firebaseio.com",
+                projectId: "football-c4a66",
+                storageBucket: "football-c4a66.appspot.com",
+                messagingSenderId: "816618764771",
+                appId: "1:816618764771:web:80a69d110079bf080e48d6",
+                measurementId: "G-946RE3GCMW"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const database = firebase.database();
+
+            // Function to generate table HTML
+            function generateTableHTML(groupName, teams) {
+                let tableHTML = `
+                    <div class="group">
+                        <div class="group-title">Group ${groupName}</div>
+                        <table id="group-${groupName.toLowerCase()}">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Team</th>
+                                    <th>Played</th>
+                                    <th>Won</th>
+                                    <th>Drawn</th>
+                                    <th>Lost</th>
+                                    <th>GF</th>
+                                    <th>GA</th>
+                                    <th>GD</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+
+                teams.forEach((team, index) => {
+                    tableHTML += `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${team.team}</td>
+                            <td>${team.played}</td>
+                            <td>${team.won}</td>
+                            <td>${team.drawn}</td>
+                            <td>${team.lost}</td>
+                            <td>${team.gf}</td>
+                            <td>${team.ga}</td>
+                            <td>${team.gd}</td>
+                            <td>${team.points}</td>
+                        </tr>
+                    `;
+                });
+
+                tableHTML += `
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                return tableHTML;
+            }
+
+            // Function to populate all group tables
+            function populateAllGroups() {
+                const groupNames = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+                const container = document.getElementById('group-tables');
+                container.innerHTML = ''; // Clear existing tables
+
+                groupNames.forEach(groupName => {
+                    const groupRef = database.ref(`groups/Group ${groupName}`);
+
+                    groupRef.on('value', snapshot => {
+                        const data = snapshot.val();
+                        if (data) {
+                            const teams = Object.values(data).sort((a, b) => b.points - a.points);
+                            const tableHTML = generateTableHTML(groupName, teams);
+
+                            // Check if the table already exists
+                            const groupTable = document.getElementById(`group-${groupName.toLowerCase()}`);
+                            if (groupTable) {
+                                // If table exists, update it
+                                groupTable.parentElement.innerHTML = tableHTML;
+                            } else {
+                                // If table does not exist, add it to the container
+                                container.innerHTML += tableHTML;
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Populate group tables on page load and on database changes
+            populateAllGroups();
+        });
+    </script>
+</body>
+</html>

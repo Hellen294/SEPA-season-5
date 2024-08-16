@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertise with Us & Subscribe for Match Updates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .success-message {
+            color: green;
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+            margin-top: 20px;
+        }
+        .subscribe-section {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .subscribe-section h2 {
+            margin-bottom: 20px;
+        }
+        .subscribe-section p {
+            margin-bottom: 15px;
+        }
+        .subscribe-section button {
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+        .subscribe-section button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Daily Match Tips</h1>
+    </header>
+
+<section class="subscribe-section">
+    <h2>Subscribe for Daily Match Updates</h2>
+    <p>Get daily updates for all matches this month for just N2,000.</p>
+    <p>Pay to Opay - <strong>8102341648 (Marshall Jacob)</strong></p>
+    <p>Send your payment receipt to WhatsApp: <strong>+2348102341648</strong></p>
+    <a id="whatsappLink" href="#" target="_blank">
+        <button>Subscribe Now</button>
+    </a>
+</section>
+
+    <script>
+   document.getElementById('whatsappLink').href = "https://wa.me/2348102341648?text=" + encodeURIComponent("Hello, I've made the payment for daily match updates.");
+</script>
+
+</body>
+</html>

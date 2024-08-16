@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Livescore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            max-width: 800px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .update-form {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .update-form h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .update-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .update-form input, .update-form select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .update-form input[type="number"] {
+            max-width: 100px;
+        }
+        .update-form button {
+            background-color: #77aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            font-size: 16px;
+        }
+        .update-form button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Update Livescore</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="update-form">
+            <h2>Update Match Details</h2>
+            <form id="updateForm">
+                <div>
+                    <label for="fixtureSelect">Select Fixture:</label>
+                    <select id="fixtureSelect">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
+                <div>
+                    <label for="teamAName">Team A Name:</label>
+                    <input type="text" id="teamAName" placeholder="Enter Team A name">
+                </div>
+                <div>
+                    <label for="teamBName">Team B Name:</label>
+                    <input type="text" id="teamBName" placeholder="Enter Team B name">
+                </div>
+                <div>
+                    <label for="teamAScore">Team A Score:</label>
+                    <input type="number" id="teamAScore" min="0" placeholder="0">
+                </div>
+                <div>
+                    <label for="teamBScore">Team B Score:</label>
+                    <input type="number" id="teamBScore" min="0" placeholder="0">
+                </div>
+                <h3>Timers</h3>
+                <div>
+                    <label for="timer">Timer Status:</label>
+                    <select id="timer">
+                        <option value="Not Started">Not Started</option>
+                        <option value="HT">HT</option>
+                        <option value="1st">1st 0-45+</option>
+                        <option value="2nd">2nd 46-90+</option>
+                        <option value="FT">FT</option>
+                    </select>
+                </div>
+                <h3>Statistics</h3>
+                <div>
+                    <label for="possessionA">Ball Possession Team A (%):</label>
+                    <input type="number" id="possessionA" min="0" max="100" placeholder="0">
+                </div>
+                <div>
+                    <label for="possessionB">Ball Possession Team B (%):</label>
+                    <input type="number" id="possessionB" min="0" max="100" placeholder="0">
+                </div>
+                <div>
+                    <label for="yellowA">Yellow Cards Team A:</label>
+                    <input type="number" id="yellowA" min="0" placeholder="0">
+                </div>
+                <div>
+                    <label for="yellowB">Yellow Cards Team B:</label>
+                    <input type="number" id="yellowB" min="0" placeholder="0">
+                </div>
+                <div>
+                    <label for="redA">Red Cards Team A:</label>
+                    <input type="number" id="redA" min="0" placeholder="0">
+                </div>
+                <div>
+                    <label for="redB">Red Cards Team B:</label>
+                    <input type="number" id="redB" min="0" placeholder="0">
+                </div>
+                <button type="submit">Update Livescore</button>
+            </form>
+        </div>
+    </div>
+    <!-- Firebase setup -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBK5UM0n8-GLvleW7l6B8Hi-_WuC64QA4U",
+            authDomain: "scores-b25a7.firebaseapp.com",
+            projectId: "scores-b25a7",
+            storageBucket: "scores-b25a7.appspot.com",
+            messagingSenderId: "1001957936318",
+            appId: "1:1001957936318:web:43934942ee87654fd8e2ef",
+            measurementId: "G-3QES2VR31T"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+
+        window.onload = function() {
+            const fixtureSelect = document.getElementById('fixtureSelect');
+            for (let i = 1; i <= 42; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `Fixture ${i}`;
+                fixtureSelect.appendChild(option);
+            }
+        };
+
+        document.getElementById('updateForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fixtureNumber = document.getElementById('fixtureSelect').value;
+            const updates = {};
+
+            const teamAName = document.getElementById('teamAName').value;
+            if (teamAName) updates[`/fixtures/fixture${fixtureNumber}/teamA/name`] = teamAName;
+
+            const teamBName = document.getElementById('teamBName').value;
+            if (teamBName) updates[`/fixtures/fixture${fixtureNumber}/teamB/name`] = teamBName;
+
+            const teamAScore = document.getElementById('teamAScore').value;
+            if (teamAScore) updates[`/fixtures/fixture${fixtureNumber}/teamA/score`] = teamAScore;
+
+            const teamBScore = document.getElementById('teamBScore').value;
+            if (teamBScore) updates[`/fixtures/fixture${fixtureNumber}/teamB/score`] = teamBScore;
+
+            const timerStatus = document.getElementById('timer').value;
+            updates[`/fixtures/fixture${fixtureNumber}/timer`] = timerStatus;
+
+            const possessionA = document.getElementById('possessionA').value;
+            if (possessionA) updates[`/fixtures/fixture${fixtureNumber}/statistics/possessionA`] = possessionA;
+
+            const possessionB = document.getElementById('possessionB').value;
+            if (possessionB) updates[`/fixtures/fixture${fixtureNumber}/statistics/possessionB`] = possessionB;
+
+            const yellowA = document.getElementById('yellowA').value;
+            if (yellowA) updates[`/fixtures/fixture${fixtureNumber}/statistics/yellowA`] = yellowA;
+
+            const yellowB = document.getElementById('yellowB').value;
+            if (yellowB) updates[`/fixtures/fixture${fixtureNumber}/statistics/yellowB`] = yellowB;
+
+            const redA = document.getElementById('redA').value;
+            if (redA) updates[`/fixtures/fixture${fixtureNumber}/statistics/redA`] = redA;
+
+            const redB = document.getElementById('redB').value;
+            if (redB) updates[`/fixtures/fixture${fixtureNumber}/statistics/redB`] = redB;
+
+            database.ref().update(updates);
+        });
+    </script>
+</body>
+</html>
