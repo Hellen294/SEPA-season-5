@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const contentElement = document.getElementById('content');
         const contentText = contentElement.textContent.trim();
 
-        if (contentText === '1st') {
+        if (contentText === '1st 0-45+') {
             if (mode !== 'start') {
                 // Reset the start time if mode changes
                 startTime = Date.now();
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('startTime', startTime);
             }
             mode = 'start';
-        } else if (contentText === '2nd') {
+        } else if (contentText === '2nd 45-90+') {
             if (mode !== 'resume') {
                 // Reset the start time if mode changes
                 startTime = Date.now() - (45 * 60 * 1000); // Adjust for 45 minutes
