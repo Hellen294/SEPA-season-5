@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const timerElement = document.getElementById('timer');
+    const statusElement = document.getElementById('timerStatus');
+
     let startTime = parseFloat(localStorage.getItem('startTime')) || Date.now();
     let mode = localStorage.getItem('mode') || 'start';
 
@@ -28,12 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(updateTimer);
     }
 
-    function checkContent() {
-        // Check if the content matches '1st' or '2nd' and set mode accordingly
-        const contentElement = document.getElementById('content');
-        const contentText = contentElement ? contentElement.textContent.trim() : '';
+    function checkStatus() {
+        // Check the status text and set mode accordingly
+        const statusText = statusElement.textContent.trim();
 
-        if (contentText === '1st') {
+        if (statusText === '1st') {
             if (mode !== 'start') {
                 // Reset the start time if mode changes
                 startTime = Date.now();
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('mode', 'start');
             }
             mode = 'start';
-        } else if (contentText === '2nd') {
+        } else if (statusText === '2nd') {
             if (mode !== 'resume') {
                 // Adjust the start time to account for the 45 minutes already counted
                 startTime = Date.now() - (45 * 60 * 1000); // Adjust for 45 minutes
@@ -53,9 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Initial content check and timer update
-    checkContent();
+    checkStatus();
     updateTimer();
 
-    // Periodically check content
-    setInterval(checkContent, 1000); // Check every second
+    // Periodically check status
+    setInterval(checkStatus, 1000); // Check every second
 });
