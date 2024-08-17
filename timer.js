@@ -23,39 +23,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Save the current time in localStorage
         localStorage.setItem('startTime', startTime);
+        localStorage.setItem('mode', mode);
+
         requestAnimationFrame(updateTimer);
     }
 
     function checkContent() {
         // Check if the content matches '1st' or '2nd' and set mode accordingly
         const contentElement = document.getElementById('content');
-        const contentText = contentElement.textContent.trim();
+        const contentText = contentElement ? contentElement.textContent.trim() : '';
 
         if (contentText === '1st') {
             if (mode !== 'start') {
                 // Reset the start time if mode changes
                 startTime = Date.now();
-                localStorage.setItem('mode', 'start');
                 localStorage.setItem('startTime', startTime);
+                localStorage.setItem('mode', 'start');
             }
             mode = 'start';
         } else if (contentText === '2nd') {
             if (mode !== 'resume') {
-                // Reset the start time if mode changes
+                // Adjust the start time to account for the 45 minutes already counted
                 startTime = Date.now() - (45 * 60 * 1000); // Adjust for 45 minutes
-                localStorage.setItem('mode', 'resume');
                 localStorage.setItem('startTime', startTime);
+                localStorage.setItem('mode', 'resume');
             }
             mode = 'resume';
         }
-
-        // Save mode
-        localStorage.setItem('mode', mode);
     }
 
-    // Update the timer and check content periodically
-    setInterval(() => {
-        checkContent();
-        updateTimer();
-    }, 1000); // Check and update every second
+    // Initial content check and timer update
+    checkContent();
+    updateTimer();
+
+    // Periodically check content
+    setInterval(checkContent, 1000); // Check every second
 });
