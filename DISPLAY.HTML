@@ -151,7 +151,7 @@
         <div class="title">SEPA SEASON 5</div>
         <div class="details">G.S.S. SULEJA | AUGUST 17, 2024</div>
         <div class="fixture">
-            <span>JIKADAWA [0]</span> <strong>VS</strong> <span>[0] SUPER LION</span>
+            <span>JIKADAWA</span> <strong>VS</strong> <span>SUPER LION</span>
         </div>
         <div id="countdown" class="countdown"></div>
         <div class="footer">
@@ -195,9 +195,9 @@
 
             // After the countdown ends
             if (distance < 0 && distance >= -7200000) { // 2 hours (in milliseconds)
-                document.getElementById("countdown").innerHTML = "Match is ongoing!";
+                document.getElementById("countdown").innerHTML = "Match is ongoing! Score will be displayed at FT";
             } else if (distance < -7200000) { // After 2 hours
-                document.getElementById("countdown").innerHTML = "Finished";
+                document.getElementById("countdown").innerHTML = "Finished FT Score 0:0";
                 clearInterval(countdownFunction); // Stop the countdown
             }
 
