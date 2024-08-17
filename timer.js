@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusElement = document.getElementById('timerStatus');
 
     let startTime = parseFloat(localStorage.getItem('startTime')) || Date.now();
-    let mode = localStorage.getItem('mode') || 'start';
+    let mode = localStorage.getItem('mode') || 'hide'; // Default mode is 'hide'
 
     function updateTimer() {
         const now = Date.now();
@@ -19,11 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const adjustedElapsed = elapsed - (45 * 60); // Shift by 45 minutes
             minutes = Math.min(Math.floor(adjustedElapsed / 60) + 45, 90);
             seconds = Math.floor(adjustedElapsed % 60);
+        } else {
+            // Hide the timer if mode is 'hide'
+            timerElement.textContent = '00:00';
+            timerElement.style.display = 'none';
+            return;
         }
 
+        // Update timer display
         timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        timerElement.style.display = 'block'; // Ensure timer is visible
 
-        // Save the current time in localStorage
+        // Save the current time and mode in localStorage
         localStorage.setItem('startTime', startTime);
         localStorage.setItem('mode', mode);
 
@@ -50,6 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('mode', 'resume');
             }
             mode = 'resume';
+        } else {
+            // Hide the timer if status is neither '1st' nor '2nd'
+            mode = 'hide';
         }
     }
 
@@ -58,5 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTimer();
 
     // Periodically check status
-    setInterval(checkStatus, 1000); // Check every second
+    setInterval(() => {
+        checkStatus();
+        updateTimer();
+    }, 1000); // Check every second
 });
