@@ -170,46 +170,57 @@
             }
         };
 
-        document.getElementById('updateForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const fixtureNumber = document.getElementById('fixtureSelect').value;
-            const updates = {};
+document.getElementById('updateForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fixtureNumber = document.getElementById('fixtureSelect').value;
+    const updates = {};
 
-            const teamAName = document.getElementById('teamAName').value;
-            if (teamAName) updates[`/fixtures/fixture${fixtureNumber}/teamA/name`] = teamAName;
+    // Collect updates for Team A
+    const teamAName = document.getElementById('teamAName').value;
+    if (teamAName) updates[`/fixtures/fixture${fixtureNumber}/teamA/name`] = teamAName;
 
-            const teamBName = document.getElementById('teamBName').value;
-            if (teamBName) updates[`/fixtures/fixture${fixtureNumber}/teamB/name`] = teamBName;
+    const teamAScore = document.getElementById('teamAScore').value;
+    if (teamAScore) updates[`/fixtures/fixture${fixtureNumber}/teamA/score`] = teamAScore;
 
-            const teamAScore = document.getElementById('teamAScore').value;
-            if (teamAScore) updates[`/fixtures/fixture${fixtureNumber}/teamA/score`] = teamAScore;
+    // Collect updates for Team B
+    const teamBName = document.getElementById('teamBName').value;
+    if (teamBName) updates[`/fixtures/fixture${fixtureNumber}/teamB/name`] = teamBName;
 
-            const teamBScore = document.getElementById('teamBScore').value;
-            if (teamBScore) updates[`/fixtures/fixture${fixtureNumber}/teamB/score`] = teamBScore;
+    const teamBScore = document.getElementById('teamBScore').value;
+    if (teamBScore) updates[`/fixtures/fixture${fixtureNumber}/teamB/score`] = teamBScore;
 
-            const timerStatus = document.getElementById('timer').value;
-            updates[`/fixtures/fixture${fixtureNumber}/timer`] = timerStatus;
+    // Update timer status
+    const timerStatus = document.getElementById('timer').value;
+    updates[`/fixtures/fixture${fixtureNumber}/timer`] = timerStatus;
 
-            const possessionA = document.getElementById('possessionA').value;
-            if (possessionA) updates[`/fixtures/fixture${fixtureNumber}/statistics/possessionA`] = possessionA;
+    // Collect statistics updates
+    const possessionA = document.getElementById('possessionA').value;
+    if (possessionA) updates[`/fixtures/fixture${fixtureNumber}/statistics/possessionA`] = possessionA;
 
-            const possessionB = document.getElementById('possessionB').value;
-            if (possessionB) updates[`/fixtures/fixture${fixtureNumber}/statistics/possessionB`] = possessionB;
+    const possessionB = document.getElementById('possessionB').value;
+    if (possessionB) updates[`/fixtures/fixture${fixtureNumber}/statistics/possessionB`] = possessionB;
 
-            const yellowA = document.getElementById('yellowA').value;
-            if (yellowA) updates[`/fixtures/fixture${fixtureNumber}/statistics/yellowA`] = yellowA;
+    const yellowA = document.getElementById('yellowA').value;
+    if (yellowA) updates[`/fixtures/fixture${fixtureNumber}/statistics/yellowA`] = yellowA;
 
-            const yellowB = document.getElementById('yellowB').value;
-            if (yellowB) updates[`/fixtures/fixture${fixtureNumber}/statistics/yellowB`] = yellowB;
+    const yellowB = document.getElementById('yellowB').value;
+    if (yellowB) updates[`/fixtures/fixture${fixtureNumber}/statistics/yellowB`] = yellowB;
 
-            const redA = document.getElementById('redA').value;
-            if (redA) updates[`/fixtures/fixture${fixtureNumber}/statistics/redA`] = redA;
+    const redA = document.getElementById('redA').value;
+    if (redA) updates[`/fixtures/fixture${fixtureNumber}/statistics/redA`] = redA;
 
-            const redB = document.getElementById('redB').value;
-            if (redB) updates[`/fixtures/fixture${fixtureNumber}/statistics/redB`] = redB;
+    const redB = document.getElementById('redB').value;
+    if (redB) updates[`/fixtures/fixture${fixtureNumber}/statistics/redB`] = redB;
 
-            database.ref().update(updates);
-        });
+    // Perform the update operation
+    database.ref().update(updates).then(() => {
+        alert('Livescore updated successfully!');
+    }).catch((error) => {
+        console.error('Error updating livescore:', error);
+        alert('Failed to update livescore.');
+    });
+});
+
     </script>
 </body>
 </html>
