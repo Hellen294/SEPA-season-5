@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         slides[slideIndex - 1].style.display = 'block';
 
-        // Change slide every 3 seconds (or adjust to your preference)
-        setTimeout(showSlides, 3000);
+        // Change slide every 5 seconds (or adjust to your preference)
+        setTimeout(showSlides, 5000);
     }
 
     // Show the ad popup after 5 seconds
@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         adPopup.style.display = 'block';
         showSlides();
 
-        // Hide the ad popup after 10 seconds
+        // Hide the ad popup after 20 seconds
         setTimeout(() => {
             adPopup.style.display = 'none';
-        }, 10000);
+        }, 20000);
     }, 5000);
 
     // Close button functionality
