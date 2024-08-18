@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
     <link rel="stylesheet" href="pop.css">
     <script src="pop.js"></script>
+    <!-- Include Firebase SDKs (compat version for backward compatibility) -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 </head>
 
 <body>
@@ -147,6 +150,7 @@
             </div>
         </section>
     </main>
+    
     <!-- Pop-Up Ad -->
     <div id="ad-popup" class="ad-popup">
         <div class="ad-content">
@@ -174,11 +178,46 @@
             <button id="close-btn">Close</button>
         </div>
     </div>
+
     <!-- Footer Section -->
     <footer>
         <p>Designed and managed by <strong>MathCloud-Tech</strong> - WhatsApp: +2348102341648</p>
         <p>For more information about SEPA SEASON 5 FOOTBALL TOURNAMENT, visit our official website or follow us on social media.</p>
     </footer>
+
+    <p>Page views: <span id="viewCount">Loading...</span></p>
+
+    <!-- Firebase configuration and script -->
+    <script>
+        // Firebase configuration (replace with your own Firebase config)
+        const firebaseConfig = {
+            apiKey: "AIzaSyATPcqBcNmcQkIz6DVpRQ7Aq98yHJt7dDY",
+            authDomain: "live-score-57927.firebaseapp.com",
+            databaseURL: "https://live-score-57927-default-rtdb.firebaseio.com",
+            projectId: "live-score-57927",
+            storageBucket: "live-score-57927.appspot.com",
+            messagingSenderId: "127539049395",
+            appId: "1:127539049395:web:69ae352cfcd8a42cc651c6",
+            measurementId: "G-7NBDLPCX20"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to the database
+        const db = firebase.database();
+        const pageViewsRef = db.ref('page_views/sepa_tournament');
+
+        // Increment the page view count
+        pageViewsRef.transaction(currentValue => {
+            return (currentValue || 0) + 1;
+        });
+
+        // Display the page view count
+        pageViewsRef.on('value', snapshot => {
+            document.getElementById('viewCount').textContent = snapshot.val();
+        });
+    </script>
 
     <script src="script.js"></script> <!-- Link to your JavaScript file -->
 </body>
