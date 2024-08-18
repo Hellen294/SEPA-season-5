@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Football Matchday Display</title>
+    <!-- Include Firebase SDKs (compat version for backward compatibility) -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
     <style>
+        /* Your existing styles */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
 
         body {
@@ -161,7 +165,7 @@
             </a>
         </div>
     </div>
-
+    <p>Page views: <span id="viewCount">Loading...</span></p>
     <!-- Background Music -->
     <audio autoplay loop id="background-music">
         <source src="your-music-file.mp3" type="audio/mpeg">
@@ -197,7 +201,7 @@
             if (distance < 0 && distance >= -7200000) { // 2 hours (in milliseconds)
                 document.getElementById("countdown").innerHTML = "Match is ongoing! Score will be displayed at FT";
             } else if (distance < -7200000) { // After 2 hours
-                document.getElementById("countdown").innerHTML = "Finished FT Score laoding...-:-";
+                document.getElementById("countdown").innerHTML = "Finished FT Score loading...-:-";
                 clearInterval(countdownFunction); // Stop the countdown
             }
 
@@ -205,6 +209,44 @@
 
         // Set the background music volume to medium
         document.getElementById("background-music").volume = 0.5;
+
+        // Firebase configuration (replace with your own Firebase config)
+        const firebaseConfig = {
+            apiKey: "AIzaSyATPcqBcNmcQkIz6DVpRQ7Aq98yHJt7dDY",
+            authDomain: "live-score-57927.firebaseapp.com",
+            databaseURL: "https://live-score-57927-default-rtdb.firebaseio.com",
+            projectId: "live-score-57927",
+            storageBucket: "live-score-57927.appspot.com",
+            messagingSenderId: "127539049395",
+            appId: "1:127539049395:web:69ae352cfcd8a42cc651c6",
+            measurementId: "G-7NBDLPCX20"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // Reference the counter in the database
+        const counterRef = db.ref('pageViews');
+
+        // Increment the counter when the page is loaded
+        counterRef.transaction(function(currentValue) {
+            return (currentValue || 0) + 1;
+        })
+        .then(() => {
+            // Display the current count
+            counterRef.on('value', function(snapshot) {
+                if (snapshot.exists()) {
+                    document.getElementById('viewCount').innerText = snapshot.val();
+                } else {
+                    document.getElementById('viewCount').innerText = '0';
+                }
+            });
+        })
+        .catch((error) => {
+            console.error("Error incrementing counter: ", error);
+            document.getElementById('viewCount').innerText = 'Error';
+        });
     </script>
 
 </body>
