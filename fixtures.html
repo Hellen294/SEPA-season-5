@@ -86,6 +86,54 @@ footer {
     padding: 10px 0;
     margin-top: 40px;
 }
+        /* Pop-up styling */
+        #popupAd {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1000;
+            padding: 20px;
+            animation: fadeIn 1s, fadeOut 1s ease-in-out 14s;
+        }
+
+        /* Button styling */
+        #popupAd button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Keyframes for animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -371,5 +419,30 @@ footer {
         <p>Designed and managed by <strong>MathCloud-Tech</strong> - WhatsApp: +2348102341648</p>
         <p>For more information about SEPA SEASON 5 FOOTBALL TOURNAMENT, visit our official website or follow us on social media.</p>
     </footer>
+    <div id="popupAd">
+        <h2>Mathcloud-Tech</h2>
+        <p>Your Digital Transformation Partner</p>
+        <p>We bring your ideas to life with our expert services in:</p>
+        <ul>
+            <li>Website Development</li>
+            <li>Design</li>
+            <li>Administration</li>
+        </ul>
+        <p>"We bring your idea to online presence"</p>
+        <button>Explore Now!</button>
+    </div>
+    <script>
+        // Show the pop-up after 5 seconds
+        setTimeout(function() {
+            var popup = document.getElementById("popupAd");
+            popup.style.display = "block";
+        }, 5000);
+
+        // Hide the pop-up after 15 seconds
+        setTimeout(function() {
+            var popup = document.getElementById("popupAd");
+            popup.style.display = "none";
+        }, 20000); // 15 seconds after it appears
+    </script>
 </body>
 </html>
